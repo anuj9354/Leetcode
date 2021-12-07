@@ -26,11 +26,21 @@ def Longest_Palindrome_Manacher(s):
                 center += 1
             else:
                 radius = maxMirrorRadius
-                break           
+                break
 
-    maxi = max(palinRadii)
+    maxi , pos = 0 , 0
+    for i in range(l1):
+        if palinRadii[i] > maxi:
+            maxi = palinRadii[i]
+            pos = i
 
-    return maxi
+    i , j , ans = pos - maxi , pos + maxi, ""
+    while i < j:
+        if s1[i] != "|":
+            ans += s1[i]
+        i+=1
+
+    return ans
 
 def Longest_Palindrome_Slow(s):
     s1 , l = "|", len(s)
