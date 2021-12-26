@@ -1,9 +1,22 @@
- def isMatch(self, s: str, p: str) -> bool:
-    if not p:
-        return not s
+def isMatch(text: str, pattern: str) -> bool:
+    d , lp , lt = {} , len(pattern) , len(text)
     
-    firstMatch = len(s) > 0 and p[0] in {s[0], "."}
-    if len(p) > 1 and p[1] == "*":
-        return self.isMatch(s, p[2:]) or firstMatch or self.isMatch(s[1:], p)
+    def topDownDP(i,j):
+        if (i,j) not in d:
+            if j == lp:
+                ans = i == lt
+            else:
+                first_match = i < lt and pattern[j] in {text[i] , '.'}
+                if j + 1 < lp and pattern[j + 1] == '*':
+                    ans = topDownDP(i , j + 2) or first_match and topDownDP(i + 1 , j)
+                else:
+                    ans = first_match and topDownDP(i + 1 , j + 1)
+                    
+            d[i , j] = ans
+        
+        return d[i , j]
     
-    return firstMatch or self.isMatch(s[1:], p[1:])
+    return topDownDP(0 , 0) 
+
+s , p = input().split(" ")
+print (isMatch(s,p))
