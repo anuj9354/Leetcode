@@ -49,6 +49,22 @@ class Solution:
             point = point.next
                            
         return head.next
+
+    def mergeKLists_Arrays(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        ans = head = ListNode(0)
+        arr = []
+        
+        for x in lists:
+            while x:
+                arr.append(x.val)
+                x = x.next
+        
+        arr.sort()
+        for x in arr:
+            head.next = ListNode(x)
+            head = head.next
+            
+        return ans.next 
     
     def mergeKLists_divide_conquer(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         count = len(lists)   
