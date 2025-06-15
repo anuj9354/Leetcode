@@ -19,6 +19,21 @@ class TwoSum:
         
         return False
 
-obj = TwoSum()
-obj.add(number)
-param_2 = obj.find(value)
+ops = list(map(int, input().split()))
+arr = input().split()
+l = len(ops)
+
+for i in range(l):
+    if ops[i] == "TwoSum":
+        obj = TwoSum()
+    elif ops[i] == "add":
+        obj.add(arr[i])
+    else:
+        obj.find(arr[i)
+
+#obj = TwoSum()
+#obj.add(number)
+#param_2 = obj.find(value)
+
+# ["TwoSum", "add", "add", "add", "find", "find"]
+# [[], [1], [3], [5], [4], [7]]

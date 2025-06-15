@@ -16,7 +16,7 @@ def twoSum_onePass(nums: List[int], target: int) -> List[int]:
         x = target - nums[i]
         if x in visited:
             return [visited[x], i]
-        visited[nums[i]] = i       
+        visited[nums[i]] = i
 
 arr = [int(x) for x in input().split()]
 target = int(input())
